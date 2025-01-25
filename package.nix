@@ -1,4 +1,6 @@
 {
+  aiodns,
+  aiohttp,
   buildPythonPackage,
   flit-core,
   lib,
@@ -22,10 +24,12 @@ let
       ];
     };
     build-system = [ flit-core ];
-    pythonImportsCheck = [ finalAttrs.pname ];
-    nativeCheckInputs = [
-      pyright
+    dependencies = [
+      aiodns
+      aiohttp
     ];
+    pythonImportsCheck = [ finalAttrs.pname ];
+    nativeCheckInputs = [ pyright ];
     passthru.optional-dependencies.dev = [
       pyright
       ruff

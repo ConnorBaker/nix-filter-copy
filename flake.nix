@@ -45,10 +45,11 @@
           ...
         }:
         {
-          _module.args.pkgs = import inputs.nixpkgs { inherit system; 
-          overlays = [inputs.self.overlays.default];
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ inputs.self.overlays.default ];
           };
-          
+
           devShells = {
             inherit (config.packages) nix-filter-copy;
             default = config.treefmt.build.devShell;
@@ -80,10 +81,6 @@
 
               # Python
               ruff.enable = true;
-
-              # Shell
-              shellcheck.enable = true;
-              shfmt.enable = true;
             };
           };
         };
