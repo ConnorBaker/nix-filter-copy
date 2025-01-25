@@ -1,0 +1,40 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "nix_filter_copy"
+version = "0.1.0"
+authors = [
+    { name = "Jared Baur", email = "jaredbaur@fastmail.com" },
+    { name = "Connor Baker", email = "ConnorBaker01@gmail.com" }
+]
+requires-python = ">=3.11"
+license = { text = "BSD-3-Clause" }
+description = "TODO"
+
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[project.scripts]
+nix-filter-copy = "nix_filter_copy:__main__.main"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.lint]
+preview = true
+select = ["F", "E", "W", "I", "PL", "FURB", "LOG", "RUF", "G", "TID"]
+ignore = [
+  # Ignore functions with many arguments (I like currying)
+  "PLR0913",
+]
+
+[tool.pyright]
+include = ["./nix_filter_copy"]
+pythonVersion = "3.12"
+pythonPlatform = "Linux"
+typeCheckingMode = "strict"
